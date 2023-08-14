@@ -17,7 +17,7 @@ pipeline{
           
             steps {
         withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          bat  'docker push docker.io/raghunath41/ip-app:$BUILD_NUMBER' 
+          sh  'docker push docker.io/raghunath41/ip-app:$BUILD_NUMBER' 
         }
     }
   }
