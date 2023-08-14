@@ -1,0 +1,29 @@
+pipeline{
+    agent{
+        label 'slave1'
+    }
+
+    stages {
+  
+  stage('Docker Build and Tag') {
+           steps {
+              
+                sh 'docker build -t imagetest:latest .' 
+                sh 'docker tag imagetest raghunath41/ip-app:$BUILD_NUMBER'
+               }
+        }
+     
+  stage('Publish image to Docker Hub') {
+          
+            steps {
+        withDockerRegistry([ credentialsId: "dockerHub", url: "https://hub.docker.com/repositories/raghunath41" ]) {
+          sh  'docker push raghunath41/ip-app:latest'
+          sh  'docker push raghunath41/ip-app:$BUILD_NUMBER' 
+        }
+    }
+  }
+    }
+
+            
+}
+  
