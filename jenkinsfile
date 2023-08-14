@@ -16,7 +16,7 @@ pipeline{
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "dockerHub", url: "https://registry.hub.docker.com" ]) {
+        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
           bat  'docker push docker.io/raghunath41/ip-app:$BUILD_NUMBER' 
         }
     }
