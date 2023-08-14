@@ -8,7 +8,7 @@ pipeline{
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t imagetest:latest .' 
+                sh 'docker build -t imagetest:latest /home/ubuntu' 
                 sh 'docker tag imagetest raghunath41/ip-app:$BUILD_NUMBER'
                }
         }
