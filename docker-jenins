@@ -27,7 +27,7 @@ pipeline {
  stage('Building image') {
  steps{
  script {
- dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+ sh "docker build -t "${env.IMAGE_REPO_NAME}:${env.IMAGE_TAG}" /home/ubuntu" 
  }
  }
  }
