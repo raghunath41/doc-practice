@@ -27,7 +27,7 @@ pipeline {
  stage('Building image') {
  steps{
  script {
- dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+ sh" docker build -t 437159622837.dkr.ecr.eu-north-1.amazonaws.com:latest /home/ubuntu"
  }
  }
  }
